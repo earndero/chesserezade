@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="caverock.androidsvg" type="repository">
+    <properties maven-id="com.caverock:androidsvg:1.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/caverock/androidsvg/1.4/androidsvg-1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,1 @@
+package com.earndero.chesserezade.stones.gomoku;
