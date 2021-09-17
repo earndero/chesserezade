@@ -5,14 +5,10 @@ import com.earndero.chesserezade.ChessBoard;
 import com.earndero.chesserezade.Fen;
 import com.earndero.chesserezade.Move;
 import com.earndero.chesserezade.State;
-import com.earndero.chesserezade.stones.History;
-import com.earndero.chesserezade.stones.gomoku.Config;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        History history = new History();
-        Config config = new Config();
         Fen fen = new Fen();
         ChessBoard board = new ChessBoard();
         State initialState = new State(board);
