@@ -199,4 +199,7 @@ public class ChessBoard {
         return pos % marginWidth == 0;
     }
 
+    public boolean outOf(int pos) {
+        return pos<0 || pos>= marginWidth*height ||  (pos % marginWidth)>=width;
+    }
 }

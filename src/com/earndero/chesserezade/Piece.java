@@ -92,7 +92,6 @@ public class Piece {
     }
 
     private long genPawn(MoveList moveList) throws IOException {
-        //if (pos==50 && board.get(50)==null && Move.istatic==6)
         long savCount = moveList.getCount();
         if (info.colorBlack) {
             boolean ifProme = board.onWhiteSecond(pos);
@@ -166,26 +165,52 @@ public class Piece {
     }
 
     private void attacksByPawn(int[] attacks, boolean black) {
+        if (black)
+            fillAttacks(attacks, dirPawnB, false);
+        else
+            fillAttacks(attacks, dirPawnW, false);
+    }
+
+    private void fillAttacks(int[] attacks, int[] directions, boolean canFar) {
+        for (int delta:directions) {
+            int newPos = pos+delta;
+            while (!board.outOf(newPos)) {
+                attacks[newPos] |= 1 << info.kind.ordinal();
+                if (!canFar) break;
+                newPos+=delta;
+            }
+        }
     }
 
     private void attacksByKnight(int[] attacks, boolean black) {
+        fillAttacks(attacks, dirKnight, false);
     }
 
     private void attacksByBishop(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir45degree, true);
     }
 
     private void attacksByRook(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir90degree, true);
     }
 
     private void attacksByMarshal(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir90degree, true);
+        fillAttacks(attacks, dirKnight, true);
     }
 
     private void attacksByCardinal(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir45degree, true);
+        fillAttacks(attacks, dirKnight, true);
     }
 
     private void attacksByQueen(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir90degree, true);
+        fillAttacks(attacks, dir45degree, true);
     }
 
     private void attacksByKing(int[] attacks, boolean black) {
+        fillAttacks(attacks, dir90degree, false);
+        fillAttacks(attacks, dir45degree, false);
     }
 }
